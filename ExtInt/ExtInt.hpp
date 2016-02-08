@@ -309,13 +309,13 @@ ExtInt operator /(const ExtInt &a, const ExtInt &b) {
 			ret.low -> append(left);
 			ret.length++;
 			tmp = tmp - div * left;
-			if (tmp == ExtInt(0)) {
-				tmp.high -> remove();
-				tmp.length = 0;
-			}
 		} else {
 			ret.low -> append(0);
 			ret.length++;
+		}
+		if (tmp == ExtInt(0)) {
+			tmp.high -> remove();
+			tmp.length = 0;
 		}
 	}
 	while (ret.length > 1 && ret.high -> forward -> data == 0) {
@@ -354,4 +354,6 @@ ExtInt & ExtInt::operator %=(const ExtInt &rhs) {
 }
 
 #endif
+#endif
+
 #endif
