@@ -323,6 +323,9 @@ ExtInt operator /(const ExtInt &a, const ExtInt &b) {
 		ret.length--;
 	}
 	ret.isNegative = a.isNegative ^ b.isNegative;
+	if (ret.isNegative && tmp.low -> next != tmp.high) {
+		ret = ret - 1;
+	}
 	return ret;
 }
 ExtInt operator %(const ExtInt &a, const ExtInt &b) {
