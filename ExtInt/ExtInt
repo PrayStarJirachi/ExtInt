@@ -1,0 +1,60 @@
+#ifndef EXTINT_H
+#define EXTINT_H
+
+#include <cctype>
+#include <string>
+#include <istream>
+#include <ostream>
+#include <cassert>
+#include <iomanip>
+
+class ExtInt{
+friend ExtInt operator +(const ExtInt &a, const ExtInt &b);
+friend ExtInt operator -(const ExtInt &a, const ExtInt &b);
+friend ExtInt operator *(const ExtInt &a, const ExtInt &b);
+friend ExtInt operator /(const ExtInt &a, const ExtInt &b);
+friend ExtInt operator %(const ExtInt &a, const ExtInt &b);
+friend bool operator <(const ExtInt &a, const ExtInt &b);
+friend bool operator >(const ExtInt &a, const ExtInt &b);
+friend bool operator <=(const ExtInt &a, const ExtInt &b);
+friend bool operator >=(const ExtInt &a, const ExtInt &b);
+friend bool operator ==(const ExtInt &a, const ExtInt &b);
+friend bool operator !=(const ExtInt &a, const ExtInt &b);
+friend std::istream & operator >>(std::istream &inputStream, ExtInt &data);
+friend std::ostream & operator <<(std::ostream &outputStream, const ExtInt &data);
+private:
+	static const int LIMIT = 10;
+	static const int WIDTH = 1;
+	int length;
+	bool isNegative;
+	struct DListNode{
+		int data;
+		DListNode *forward, *next;
+		DListNode(int data = 0) : data(data), forward(NULL), next(NULL) {}
+		DListNode & remove();
+		DListNode & append(DListNode *data);
+		DListNode & append(const int &data);
+		DListNode & insert(DListNode *data);
+		DListNode & insert(const int &data);
+	}*low, *high;
+public:
+	ExtInt(int data = 0);
+	ExtInt(const ExtInt &rhs);
+	ExtInt(const std::string &rhs);
+	virtual ~ExtInt();
+	
+	ExtInt & operator =(const ExtInt &rhs);
+	ExtInt & operator +=(const ExtInt &rhs);
+	ExtInt & operator -=(const ExtInt &rhs);
+	ExtInt & operator *=(const ExtInt &rhs);
+	ExtInt & operator /=(const ExtInt &rhs);
+	ExtInt & operator %=(const ExtInt &rhs);
+	//ExtInt & operator ++();
+	//ExtInt & operator ++(int);
+	//ExtInt & operator --();
+	//ExtInt & operator --(int);
+};
+
+#include "ExtInt.hpp"
+
+#endif
