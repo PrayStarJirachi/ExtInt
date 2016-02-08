@@ -337,19 +337,19 @@ ExtInt & ExtInt::operator +=(const ExtInt &rhs) {
 	return *this;
 }
 ExtInt & ExtInt::operator -=(const ExtInt &rhs) {
-	*this = *this + rhs;
+	*this = *this - rhs;
 	return *this;
 }
 ExtInt & ExtInt::operator *=(const ExtInt &rhs) {
-	*this = *this + rhs;
+	*this = *this * rhs;
 	return *this;
 }
 ExtInt & ExtInt::operator /=(const ExtInt &rhs) {
-	*this = *this + rhs;
+	*this = *this / rhs;
 	return *this;
 }
 ExtInt & ExtInt::operator %=(const ExtInt &rhs) {
-	*this = *this + rhs;
+	*this = *this % rhs;
 	return *this;
 }
 
