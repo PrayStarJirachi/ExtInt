@@ -257,17 +257,17 @@ ExtInt operator *(const ExtInt &a, const ExtInt &b) {
 			continue;
 		}
 		tmp = a;
-		for (ExtInt::DListNode *itA = tmp.low -> next; itA != tmp.high; itA = itA -> next) {
-			itA -> data *= itB -> data;
-		}
-		for (ExtInt::DListNode *itA = tmp.low -> next; itA != tmp.high; itA = itA -> next) {
-			if (itA -> data >= ExtInt::LIMIT) {
+		ExtInt::DListNode *itA = tmp.low -> next;
+		for (long long r = 0; itA != tmp.high; itA = itA -> next) {
+			long long now = 1ll * itA -> data * itB -> data + r;
+			itA -> data = now % ExtInt::LIMIT;
+			r = 0;
+			if (now >= ExtInt::LIMIT) {
 				if (itA -> next == tmp.high) {
 					itA -> append(0);
 					tmp.length++;
 				}
-				itA -> next -> data += itA -> data / ExtInt::LIMIT;
-				itA -> data %= ExtInt::LIMIT;
+				r = now / ExtInt::LIMIT;
 			}
 		}
 		for (int i = 1; i <= value; i++) {
@@ -354,6 +354,4 @@ ExtInt & ExtInt::operator %=(const ExtInt &rhs) {
 }
 
 #endif
-#endif
-
 #endif
