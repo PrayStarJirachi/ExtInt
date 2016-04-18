@@ -88,6 +88,9 @@ ExtInt::ExtInt(const std::string &rhs) {
 		high -> remove();
 		length--;
 	}
+	if (high -> forward -> data == 0) {
+		isNegative = false;
+	}
 }
 ExtInt & ExtInt::operator =(const ExtInt &rhs) {
 	if (this == &rhs) return *this;
@@ -323,6 +326,9 @@ ExtInt operator /(const ExtInt &a, const ExtInt &b) {
 		ret.length--;
 	}
 	ret.isNegative = a.isNegative ^ b.isNegative;
+	if (ret.low -> next -> next == ret.high) {
+		ret.isNegative = 0;
+	}
 	if (ret.isNegative && tmp.low -> next != tmp.high) {
 		ret = ret - 1;
 	}

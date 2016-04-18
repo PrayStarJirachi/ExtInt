@@ -5,18 +5,7 @@ ExtInt a, b;
 
 int main() {
     std::cin >> a >> b;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
-    std::cout << a + b << std::endl;
-    std::cout << a - b << std::endl;
-    std::cout << a * b << std::endl;
-    std::cout << a / b << std::endl;
-    std::cout << a % b << std::endl;
-    std::cout << (a < b) << std::endl;
-    std::cout << (a > b) << std::endl;
-    std::cout << (a <= b) << std::endl;
-    std::cout << (a >= b) << std::endl;
-    std::cout << (a == b) << std::endl;
-    std::cout << (a != b) << std::endl;
+    auto c = a / b;
+    std::cout << c << std::endl;
     return 0;
 }
